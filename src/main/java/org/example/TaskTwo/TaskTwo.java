@@ -86,5 +86,14 @@ public class TaskTwo {
         int n = 15;
         TaskTwo taskTwo = new TaskTwo(n);
 
+        Thread threadA = new Thread(taskTwo::fizz);
+        Thread threadB = new Thread(taskTwo::buzz);
+        Thread threadC = new Thread(taskTwo::fizzbuzz);
+        Thread threadD = new Thread(taskTwo::number);
+
+        threadA.start();
+        threadB.start();
+        threadC.start();
+        threadD.start();
     }
 }

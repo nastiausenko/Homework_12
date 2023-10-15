@@ -16,6 +16,18 @@ public class TaskOne {
             }
         });
 
+        Thread messageThread = new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(5000);
+                    System.out.println("Минуло 5 секунд");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         timeThread.start();
+        messageThread.start();
     }
 }

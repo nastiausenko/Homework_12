@@ -46,6 +46,24 @@ public class TaskTwo {
         }
     }
 
+    public void fizzbuzz() {
+        synchronized (lock) {
+            while (current <= n) {
+                try {
+                    if (current % 3 == 0 && current % 5 == 0) {
+                        System.out.println("fizzbuzz");
+                        current++;
+                        lock.notifyAll();
+                    } else {
+                        lock.wait();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int n = 15;
         TaskTwo taskTwo = new TaskTwo(n);
